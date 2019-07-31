@@ -31,7 +31,7 @@ defmodule NucleotideCount do
     Enum.reduce(
       strand,
       Enum.into(@nucleotides, %{}, &{&1, 0}),
-      &Map.put(&2, &1, Map.get(&2, &1) + 1)
+      &%{&2 | &1 => &2[&1] + 1}
     )
   end
 end
