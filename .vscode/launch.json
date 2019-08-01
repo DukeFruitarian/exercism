@@ -19,7 +19,7 @@
         "--trace"
       ],
       "startApps": true,
-      "projectDir": "${workspaceRoot}/rotational-cipher",
+      "projectDir": "${workspaceRoot}/pig-latin",
       "requireFiles": [
         "test/**/test_helper.exs",
         "test/**/*_test.exs"
