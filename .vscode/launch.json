@@ -19,7 +19,7 @@
         "--trace"
       ],
       "startApps": true,
-      "projectDir": "${workspaceRoot}/run-length-encoding",
+      "projectDir": "${workspaceRoot}/twelve-days",
       "requireFiles": [
         "test/**/test_helper.exs",
         "test/**/*_test.exs"
