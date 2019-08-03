@@ -17,7 +17,7 @@
       "task": "test",
       "taskArgs": ["--trace"],
       "startApps": true,
-      "projectDir": "${workspaceRoot}/flatten-array",
+      "projectDir": "${workspaceRoot}/bob",
       "requireFiles": ["test/**/test_helper.exs", "test/**/*_test.exs"]
     }
   ]
