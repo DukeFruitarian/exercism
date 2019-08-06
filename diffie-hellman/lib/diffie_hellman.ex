@@ -50,28 +50,19 @@ defmodule DiffieHellman do
   def generate_public_key(prime_p, prime_g, private_key) do
     binary_pow = Integer.to_string(private_key, 2)
 
-    res =
+    pow_values =
       2..byte_size(binary_pow)
       |> Enum.reduce([rem(prime_g, prime_p)], fn _, [prev | rest] ->
         [rem(prev * prev, prime_p) | [prev | rest]]
       end)
-      |> Enum.reverse()
 
-    IO.inspect("!!!!!!!!!!!! #{String.byte_size(binary_pow) == length(res)}")
-
-    # get_pow_results(devider, quotient, 2, pow_count)
-    # String.to_integer(to_string(pow_count), 2)
-
-    #  pow2 = rem(prime_g * prime_g, prime_p)
-    #  pow4 = rem(pow2*pow2, prime_p)
-    #  pow8 = rem(pow4*pow4, prime_p)
-    # end
-
-    # |> IO.inspect()
-
-    # # :math.pow(prime_g, private_key)
-    # # |> rem(prime_p)
+    String.graphemes(binary_pow)
+    |> Enum.reduce({1, pow_values, prime_p}, &collect/2)
+    |> elem(0)
   end
+
+  defp collect("1", {sum, [h | t], quotient}), do: {rem(sum * h, quotient), t, quotient}
+  defp collect("0", {sum, [_ | t], quotient}), do: {sum, t, quotient}
 
   @doc """
   Given a prime integer `prime_p`, user B's public key, and user A's private key,
@@ -85,9 +76,6 @@ defmodule DiffieHellman do
           private_key_a :: integer
         ) :: integer
   def generate_shared_secret(prime_p, public_key_b, private_key_a) do
-    2..private_key_a
-    |> Enum.reduce(public_key_b, fn _, acc ->
-      rem(acc * public_key_b, prime_p)
-    end)
+    generate_public_key(prime_p, public_key_b, private_key_a)
   end
 end
