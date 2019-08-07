@@ -28,7 +28,6 @@ defmodule BeerSong do
 
   defp bottles(0), do: "no more bottles"
   defp bottles(1), do: "1 bottle"
-  defp bottles(n) when n < 0, do: "99 bottles"
   defp bottles(n), do: "#{n} bottles"
 
   defp take_part(1), do: "Take it down and pass it around"
