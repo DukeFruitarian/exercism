@@ -31,5 +31,5 @@ defmodule BeerSong do
   defp bottles(n), do: "#{n} bottles"
 
   defp take_part(1), do: "Take it down and pass it around"
-  defp take_part(n), do: "Take one down and pass it around"
+  defp take_part(_), do: "Take one down and pass it around"
 end
