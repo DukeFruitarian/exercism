@@ -10,24 +10,10 @@ defmodule BeerSong do
     """
   end
 
-  def verse(1) do
-    """
-    1 bottle of beer on the wall, 1 bottle of beer.
-    Take it down and pass it around, no more bottles of beer on the wall.
-    """
-  end
-
-  def verse(2) do
-    """
-    2 bottles of beer on the wall, 2 bottles of beer.
-    Take one down and pass it around, 1 bottle of beer on the wall.
-    """
-  end
-
   def verse(n) do
     """
-    #{n} bottles of beer on the wall, #{n} bottles of beer.
-    Take one down and pass it around, #{n - 1} bottles of beer on the wall.
+    #{bottles(n)} of beer on the wall, #{bottles(n)} of beer.
+    #{take_part(n)}, #{bottles(n - 1)} of beer on the wall.
     """
   end
 
@@ -39,4 +25,12 @@ defmodule BeerSong do
     Enum.map(range, &verse/1)
     |> Enum.join("\n")
   end
+
+  defp bottles(0), do: "no more bottles"
+  defp bottles(1), do: "1 bottle"
+  defp bottles(n) when n < 0, do: "99 bottles"
+  defp bottles(n), do: "#{n} bottles"
+
+  defp take_part(1), do: "Take it down and pass it around"
+  defp take_part(n), do: "Take one down and pass it around"
 end
