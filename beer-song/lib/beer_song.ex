@@ -13,7 +13,7 @@ defmodule BeerSong do
   def verse(n) do
     """
     #{bottles(n)} of beer on the wall, #{bottles(n)} of beer.
-    #{take_part(n)}, #{bottles(n - 1)} of beer on the wall.
+    Take #{take_part(n)} down and pass it around, #{bottles(n - 1)} of beer on the wall.
     """
   end
 
@@ -30,6 +30,6 @@ defmodule BeerSong do
   defp bottles(1), do: "1 bottle"
   defp bottles(n), do: "#{n} bottles"
 
-  defp take_part(1), do: "Take it down and pass it around"
-  defp take_part(_), do: "Take one down and pass it around"
+  defp take_part(1), do: "it"
+  defp take_part(_), do: "one"
 end
