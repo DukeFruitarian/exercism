@@ -18,15 +18,16 @@ defmodule RobotSimulator do
     east: :south
   }
 
+  defguard is_position(x, y) when is_integer(x) and is_integer(y)
+
   @spec create(direction :: atom, position :: {integer, integer}) :: any
   def create, do: create(:north, {0, 0})
 
   def create(direction, _position) when direction not in @directions,
     do: {:error, "invalid direction"}
 
-  def create(direction, {x, y} = position)
-      when is_integer(x) and is_integer(y) do
-    {:ok, pid} = GenServer.start_link(__MODULE__, {direction, position})
+  def create(direction, {x, y}) when is_position(x, y) do
+    {:ok, pid} = GenServer.start_link(__MODULE__, {direction, {x, y}})
 
     pid
   end
