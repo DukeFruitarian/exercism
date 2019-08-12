@@ -17,7 +17,7 @@
       "task": "test",
       "taskArgs": ["--trace"],
       "startApps": true,
-      "projectDir": "${workspaceRoot}/zipper",
+      "projectDir": "${workspaceRoot}/kindergarten-garden",
       "requireFiles": ["test/**/test_helper.exs", "test/**/*_test.exs"]
     }
   ]
