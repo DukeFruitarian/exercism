@@ -17,7 +17,7 @@
       "task": "test",
       "taskArgs": ["--trace"],
       "startApps": true,
-      "projectDir": "${workspaceRoot}/diamond",
+      "projectDir": "${workspaceRoot}/rail-fence-cipher",
       "requireFiles": ["test/**/test_helper.exs", "test/**/*_test.exs"]
     }
   ]
