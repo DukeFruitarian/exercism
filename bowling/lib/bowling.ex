@@ -24,22 +24,14 @@ defmodule Bowling do
         %{current_turn: %{turn_number: turn_number, turn_hits: turn_hits} = current_turn} = game,
         roll
       ) do
-    # IO.inspect({turn_number, turn_hits, game.passed_turns, roll})
     multiplier = hit_multiplier_for(turn_number, turn_hits, game.passed_turns)
-    # |> IO.inspect()
-    # IO.inspect({game, {roll, multiplier}})
 
     case add_hit(game, {roll, multiplier}) do
       {:ok, :turn_continue, new_turn_hits} ->
         %{game | current_turn: %{current_turn | turn_hits: new_turn_hits}}
 
-      # |> IO.inspect()
-
       {:ok, :turn_finished, new_turn_hits} ->
-        IO.inspect({game, new_turn_hits})
         add_turn(game, new_turn_hits)
-
-      # |> IO.inspect()
 
       error ->
         error
@@ -80,7 +72,6 @@ defmodule Bowling do
 
   def add_hit(%{current_turn: %{turn_hits: []}}, {10, _multiplier} = hit) do
     {:ok, :turn_finished, [hit]}
-    # |> IO.inspect()
   end
 
   def add_hit(
@@ -105,8 +96,6 @@ defmodule Bowling do
   end
 
   def add_hit(%{current_turn: %{turn_hits: turn_hits}}, hit) do
-    # IO.inspect({turn_hits, hit})
-
     {:ok, :turn_finished, [hit | turn_hits]}
   end
 
@@ -137,8 +126,6 @@ defmodule Bowling do
       | passed_turns: [new_turn_hits | past_turns],
         current_turn: %{turn_number: 11, turn_hits: []}
     }
-
-    # |> IO.inspect()
   end
 
   def add_turn(
@@ -153,8 +140,6 @@ defmodule Bowling do
       | passed_turns: [new_turn_hits | past_turns],
         current_turn: %{turn_number: 12, turn_hits: []}
     }
-
-    # |> IO.inspect()
   end
 
   def add_turn(
@@ -193,15 +178,11 @@ defmodule Bowling do
         } = game,
         new_turn_hits
       ) do
-    # IO.inspect(turn_hits)
-
     %{
       game
       | passed_turns: [new_turn_hits | past_turns],
         current_turn: %{turn_number: turn_number + 1, turn_hits: []}
     }
-
-    # |> IO.inspect()
   end
 
   @doc """
@@ -211,8 +192,6 @@ defmodule Bowling do
 
   @spec score(any) :: integer | String.t()
   def score(%{passed_turns: passed_turns, current_turn: nil} = game) do
-    # IO.inspect(game)
-
     Enum.reduce(passed_turns, 0, fn
       [{x, mx}, {y, my}], acc ->
         x * mx + y * my + acc
@@ -223,7 +202,6 @@ defmodule Bowling do
   end
 
   def score(game) do
-    # IO.inspect(game)
     {:error, "Score cannot be taken until the end of the game"}
   end
 end
