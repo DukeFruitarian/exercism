@@ -18,8 +18,11 @@ defmodule Luhn do
     Integer.parse(number)
     |> elem(0)
     |> Integer.digits()
-    |> Stream.map_every(2, &rem(&1 * 2, 9))
+    |> Enum.map_every(2, &double/1)
     |> Enum.sum()
     |> rem(10) == 0
   end
+
+  defp double(digit) when digit > 4, do: digit * 2 - 9
+  defp double(digit), do: digit * 2
 end
