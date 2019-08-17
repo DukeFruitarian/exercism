@@ -5,13 +5,13 @@ defmodule PascalsTriangle do
   """
   @spec rows(integer) :: [[integer]]
   def rows(num) do
-    Enum.reduce(1..num, [], &row/2)
+    Enum.reduce(1..num, [], fn _, last_row -> row(last_row) end)
     |> Enum.reverse()
   end
 
-  defp row(1, acc), do: [[1]]
+  defp row([]), do: [[1]]
 
-  defp row(number, [last_row | _previous_rows] = acc) do
+  defp row([last_row | _previous_rows] = acc) do
     current_row =
       last_row
       |> Enum.flat_map_reduce(0, fn el, last_element ->
