@@ -5,6 +5,7 @@ defmodule Bowling do
   """
   defstruct passed_turns: [], current_turn: %{turn_number: 1, turn_hits: []}
 
+  defguard is_spare(x, y) when x + y == 10
   @spec start() :: any
   def start do
     %Bowling{}
@@ -38,7 +39,8 @@ defmodule Bowling do
     end
   end
 
-  defp hit_multiplier_for(turn_number, [], [[{x, _}, {y, _}] | _later_turns]) when x + y == 10 do
+  defp hit_multiplier_for(turn_number, [], [[{x, _}, {y, _}] | _later_turns])
+       when is_spare(x, y) do
     case turn_number do
       11 -> 1
       _ -> 2
@@ -120,7 +122,7 @@ defmodule Bowling do
         } = game,
         [{x, _}, {y, _}] = new_turn_hits
       )
-      when x + y == 10 do
+      when is_spare(x, y) do
     %{
       game
       | passed_turns: [new_turn_hits | past_turns],
@@ -191,7 +193,7 @@ defmodule Bowling do
   """
 
   @spec score(any) :: integer | String.t()
-  def score(%{passed_turns: passed_turns, current_turn: nil} = game) do
+  def score(%{passed_turns: passed_turns, current_turn: nil}) do
     Enum.reduce(passed_turns, 0, fn
       [{x, mx}, {y, my}], acc ->
         x * mx + y * my + acc
@@ -201,7 +203,7 @@ defmodule Bowling do
     end)
   end
 
-  def score(game) do
+  def score(_game) do
     {:error, "Score cannot be taken until the end of the game"}
   end
 end
