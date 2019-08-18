@@ -22,7 +22,7 @@ defmodule ScaleGenerator do
   @tones ~w(A A# B C C# D D# E F F# G G#)
 
   defguard is_flat_tonic(note, postfix)
-           when (note in ~w(a b c d e f g) and postfix == "") or postfix == "b"
+           when (note in ~w(F b c d e f g) and postfix == "") or postfix == "b"
 
   @spec step(scale :: list(String.t()), tonic :: String.t(), step :: String.t()) ::
           list(String.t())
