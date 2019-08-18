@@ -5,7 +5,7 @@ defmodule ConnectTest do
     Enum.map(rows, &String.replace(&1, " ", ""))
   end
 
-  @tag :pending
+  # @tag :pending
   test "empty board has no winner" do
     board =
       remove_spaces([
@@ -19,13 +19,13 @@ defmodule ConnectTest do
     assert Connect.result_for(board) == :none
   end
 
-  @tag :pending
+  # @tag :pending
   test "1x1 board with black stone" do
     board = ["X"]
     assert Connect.result_for(board) == :black
   end
 
-  @tag :pending
+  # @tag :pending
   test "1x1 board with white stone" do
     board = ["O"]
     assert Connect.result_for(board) == :white
