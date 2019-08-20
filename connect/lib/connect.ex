@@ -29,10 +29,10 @@ defmodule Connect do
       {{0, 0}, el} ->
         find_win_route(el, [{0, 0}], matrix, row: rows - 1, column: columns - 1)
 
-      {{0, c} = indexes, el} ->
+      {{0, _c} = indexes, el} ->
         find_win_route(el, [indexes], matrix, row: rows - 1)
 
-      {{r, 0} = indexes, el} ->
+      {{_r, 0} = indexes, el} ->
         find_win_route(el, [indexes], matrix, column: columns - 1)
 
       _ ->
@@ -41,8 +41,8 @@ defmodule Connect do
   end
 
   defp find_win_route(".", _indexes, _matrix, _destination), do: nil
-  defp find_win_route(el, [{r, _} | _earlier_indexes], matrix, [{:row, r} | _]), do: el
-  defp find_win_route(el, [{_, c} | _earlier_indexes], matrix, [{:column, c} | _]), do: el
+  defp find_win_route(el, [{r, _} | _earlier_indexes], _matrix, [{:row, r} | _]), do: el
+  defp find_win_route(el, [{_, c} | _earlier_indexes], _matrix, [{:column, c} | _]), do: el
 
   defp find_win_route(el, [{r, c} | _earlier_indexes] = indexes, matrix, destinations) do
     @move_variants
