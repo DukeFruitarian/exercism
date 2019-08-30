@@ -19,7 +19,7 @@
         "--trace"
       ],
       "startApps": true,
-      "projectDir": "${workspaceRoot}/clock",
+      "projectDir": "${workspaceRoot}/armstrong-numbers",
       "requireFiles": [
         "test/**/test_helper.exs",
         "test/**/*_test.exs"
