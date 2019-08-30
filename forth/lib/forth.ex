@@ -1,5 +1,5 @@
 defmodule Forth do
-  @opaque evaluator :: any
+  @type evaluator :: any
   defstruct stack: [], custom_operations: %{}
   @dividers_rule ~r/[\x{1680}\x00\x01\n\r\t ]/u
   @digits ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
