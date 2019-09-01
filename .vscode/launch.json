@@ -19,7 +19,7 @@
         "--trace"
       ],
       "startApps": true,
-      "projectDir": "${workspaceRoot}/atbash-cipher",
+      "projectDir": "${workspaceRoot}/pythagorean-triplet",
       "requireFiles": [
         "test/**/test_helper.exs",
         "test/**/*_test.exs"
