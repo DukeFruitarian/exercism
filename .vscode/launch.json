@@ -19,7 +19,7 @@
         "--trace"
       ],
       "startApps": true,
-      "projectDir": "${workspaceRoot}/armstrong-numbers",
+      "projectDir": "${workspaceRoot}/wordy",
       "requireFiles": [
         "test/**/test_helper.exs",
         "test/**/*_test.exs"
