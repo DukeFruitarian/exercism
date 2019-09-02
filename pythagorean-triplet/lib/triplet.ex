@@ -24,8 +24,8 @@ defmodule Triplet do
   """
   @spec generate(non_neg_integer, non_neg_integer) :: [list(non_neg_integer)]
   def generate(min, max, sum \\ nil) do
-    for a <- min..(max - 1),
-        b <- (a + 1)..max,
+    for a <- min..(max - 2),
+        b <- (a + 1)..(max - 1),
         c = :math.sqrt(a * a + b * b),
         c <= max,
         c == round(c),
