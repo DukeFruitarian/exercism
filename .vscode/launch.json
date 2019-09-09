@@ -19,7 +19,7 @@
         "--trace"
       ],
       "startApps": true,
-      "projectDir": "${workspaceRoot}/dominoes",
+      "projectDir": "${workspaceRoot}/dot-dsl",
       "requireFiles": [
         "test/**/test_helper.exs",
         "test/**/*_test.exs"
